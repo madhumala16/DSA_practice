@@ -1,0 +1,39 @@
+public class LongestCommonPrefix {
+	
+	static int minLength(String arr[],int n) {
+		int min=arr[0].length();
+		for(int i=0;i<n;i++) {
+			if(arr[i].length()<min) {
+				min=arr[i].length();
+			}
+		}
+		return min;
+				}
+static String common(String arr[],int n) {
+	int minL=minLength(arr,n);
+	String ans="";
+	for(int i=0;i<minL;i++) {
+		char current=arr[0].charAt(i);
+		for(int j=0;j<n;j++) {
+			if(arr[j].charAt(i)!=current) {
+				return ans;
+			}
+			
+		}
+		ans=ans+current;
+	}
+	if(ans.isEmpty()) {
+		System.out.println("no longest common");
+	}
+	return ans;
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String arr[]= {"list","listen","like"};
+		int n=arr.length;
+		System.out.println(common(arr,n));
+		
+
+	}
+
+}
