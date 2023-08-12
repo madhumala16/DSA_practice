@@ -1,0 +1,48 @@
+public class MedianOfARR {
+	 public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+	        int n1=nums1.length;
+	        int n2=nums2.length;
+	        int result[] =new int[n1+n2];
+	        int tot=n1+n2;
+	        int i=0;
+	        int j=0;int k=0;
+	        while(i<n1&&j<n2) {
+	        	if(i==n1-1) {
+	        		while(j<n2) {
+	        			result[k++]=nums2[j++];
+	        			break;
+	        		}
+	        	}
+	        	else if(j==n2-1) {
+	        		while(i<n1) {
+	        			result[k++]=nums1[i++];
+	        			break;
+	        		}
+	        	}
+	        	if(nums1[i]<nums2[j]) {
+	        		result[k]=nums1[i];
+	        		k++;
+	        		i++;
+	        		
+	        	}
+	        	else {
+	        		result[k]=nums2[j];
+	        		k++;
+	        		j++;
+	        	}
+	        }
+	        if(tot %2==0) {
+	        	return (float)(result[tot/2-1]+result[tot/2])/2;
+	        }
+	        else {
+	        	return (result[tot/2]);
+	        }
+	    }
+	public static void main(String[] args) {
+		int[] nums1= {1,2,3};
+		int[] nums2= {4,5,6};
+		System.out.println("median is :"+findMedianSortedArrays(nums1,nums2));
+		
+	}
+
+}
